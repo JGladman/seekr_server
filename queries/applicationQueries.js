@@ -25,14 +25,26 @@ const createApplication = (req, res) => {
     interviewDate: interviewDate,
   });
   application.save((err, application) => {
-    if (err) return console.error(err);
+    if (err) {
+      res.send(err.errors);
+      return console.error(err);
+    }
     console.log(application);
     res.send(application);
   });
 };
 
-const deleteApplication = (req, res) => {};
+const deleteApplication = (req, res) => {
+  Application.findByIdAndDelete(req.params.id, (err) => {
+    if (err) {
+      res.send(err);
+      return console.error(err);
+    }
+    res.send({ status: 200 });
+  });
+};
 
 module.exports = {
   createApplication,
+  deleteApplication,
 };
