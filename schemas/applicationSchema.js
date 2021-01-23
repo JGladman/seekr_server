@@ -13,17 +13,19 @@ const applicationSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Category is required'],
   },
-  status: {
-    type: String,
-    required: [true, 'Status is required'],
-  },
   applicationStep: {
-    type: Enumerator,
-    required: [true, 'Status is required'],
+    type: Number,
+    required: [true, 'Step is required'],
+    min: 0,
+    max: 4,
+    default: 0,
   },
   priority: {
-    type: int,
+    type: Number,
     required: [false],
+    default: 1,
+    min: 1,
+    max: 5,
   },
   notes: {
     type: String,
@@ -38,3 +40,7 @@ const applicationSchema = new mongoose.Schema({
     required: [true, 'Company Name is required'],
   },
 });
+
+module.exports = {
+  applicationSchema,
+};
