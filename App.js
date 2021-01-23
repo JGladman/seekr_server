@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 const cors = require('cors');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const applications = require('./queries/applicationQueries');
 
