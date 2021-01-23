@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//attributes for an application, "constructor" in OOP
 const applicationSchema = new mongoose.Schema({
   companyName: {
     type: String,

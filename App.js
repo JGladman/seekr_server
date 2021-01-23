@@ -34,7 +34,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/applications', applications.createApplication);
+app.get('/applications/:id', applications.readApplication);
 app.delete('/applications/:id', applications.deleteApplication);
+app.get('/applications/sort/job', applications.sortJobTitle)
 
 app.listen(port, () => {
   console.log(`Express server is running on localhost:${port}`);
