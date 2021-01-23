@@ -83,7 +83,6 @@ const updateApplication = (req, res) => {
     if (!application)
       throw new Error(`Error: Application of ID: ${req.params.id} not found`);
 
-    //foundApplication = application
     if (req.body.jobTitle) application.jobTitle = req.body.jobTitle;
     if (req.body.category) application.category = req.body.category;
     if (req.body.priority) application.priority = req.body.priority;
