@@ -117,20 +117,20 @@ const deleteApplication = (req, res) => {
 
 //read sorted by category
 const sortCategory = (req, res) => {
-  const applications = Application.find()
-    .sort({ category: desc })
-    .all((applications, err) => {
+  Application.find()
+    .sort({ category: 'asc' })
+    .exec((err, applications) => {
       if (err) {
         res.send(err);
         return console.log(err);
       }
-      res.send(allApps);
+      res.send(applications);
     });
 };
 
 //read sorted by job title
 const sortJobTitle = (req, res) => {
-  const applications = Application.find()
+  Application.find()
     .sort({ jobTitle: 'asc' })
     .exec((err, applications) => {
       if (err) {
@@ -140,9 +140,45 @@ const sortJobTitle = (req, res) => {
       res.send(applications);
     });
 };
+
 //read sorted by company
+const sortCompanyName = (req, res) => {
+  Application.find()
+    .sort({ companyName: 'asc' })
+    .exec((err, applications) => {
+      if (err) {
+        res.send(err);
+        return console.log(err);
+      }
+      res.send(applications);
+    });
+};
+
 //read sorted by priority
+const sortPriority = (req, res) => {
+  Application.find()
+    .sort({ priority: 'desc' })
+    .exec((err, applications) => {
+      if (err) {
+        res.send(err);
+        return console.log(err);
+      }
+      res.send(applications);
+    });
+};
+
 //read sorted by step
+const sortApplicationStep = (req, res) => {
+  Application.find()
+    .sort({ applicationStep: 'desc' })
+    .exec((err, applications) => {
+      if (err) {
+        res.send(err);
+        return console.log(err);
+      }
+      res.send(applications);
+    });
+};
 
 module.exports = {
   createApplication,
@@ -150,5 +186,9 @@ module.exports = {
   readApplication,
   updateApplication,
   deleteApplication,
+  sortCategory,
   sortJobTitle,
+  sortCompanyName,
+  sortPriority,
+  sortApplicationStep,
 };

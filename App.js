@@ -38,7 +38,11 @@ app.get('/applications', applications.readAllApplications);
 app.get('/applications/:id', applications.readApplication);
 app.put('/applications/:id', applications.updateApplication);
 app.delete('/applications/:id', applications.deleteApplication);
+app.get('/applications/sort/category', applications.sortCategory);
 app.get('/applications/sort/job', applications.sortJobTitle);
+app.get('/applications/sort/company', applications.sortCompanyName);
+app.get('/applications/sort/priority', applications.sortPriority);
+app.get('/applications/sort/step', applications.sortApplicationStep);
 
 app.listen(port, () => {
   console.log(`Express server is running on localhost:${port}`);
