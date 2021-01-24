@@ -21,13 +21,10 @@ app.use(
 
 const port = 3001;
 
-mongoose.connect(
-  'mongodb+srv://jacob:o3RZoL8NtkzlPgtR@seekr.32iwp.mongodb.net/SeekrDB?retryWrites=true&w=majority',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-);
+mongoose.connect(process.env.CONNECTION_STRING, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
