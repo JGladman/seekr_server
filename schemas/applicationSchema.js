@@ -38,7 +38,7 @@ const applicationSchema = new mongoose.Schema({
   },
   interviewDate: {
     type: String,
-    required: [true, 'Company Name is required'],
+    required: [false],
   },
 });
 
