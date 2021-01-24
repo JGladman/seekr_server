@@ -1,12 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
+//const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 const cors = require('cors');
+const env = require('dotenv').config({ path: './.env' });
 
 const applications = require('./queries/applicationQueries');
+//const AuthRoute = require('./routes/auth.js')
+const AuthController = require ('./controllers/AuthController')
 
 const app = express();
+//app.use(morgan('dev'));
 app.use(pino);
 app.use(cors());
 app.use(bodyParser.json());
@@ -43,6 +48,10 @@ app.get('/applications/sort/job', applications.sortJobTitle);
 app.get('/applications/sort/company', applications.sortCompanyName);
 app.get('/applications/sort/priority', applications.sortPriority);
 app.get('/applications/sort/step', applications.sortApplicationStep);
+app.post('/auth/register', AuthController.register);
+app.post('/auth/login', AuthController.login);
+
+//app.use('/auth', AuthRoute)
 
 app.listen(port, () => {
   console.log(`Express server is running on localhost:${port}`);
